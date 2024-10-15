@@ -1,0 +1,9 @@
+cd c:\Snort\bin\
+
+snort -V
+
+snort -W
+
+snort -i -1 -c c:\Snort\etc\snort.conf -T
+
+snort -i 4 -c c:\snort\etc\snort.conf -A console

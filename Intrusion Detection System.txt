@@ -1,0 +1,60 @@
+Step-by-Step Guide: Setting Up an Intrusion Detection System (IDS) Using Snort
+This guide walks you through the process of downloading, installing, and configuring Snort as an Intrusion Detection System (IDS), as part of your CodeAlpha Cyber Security internship project.
+
+Step 1: Download Snort
+Go to the official Snort website https://www.snort.org/downloads.
+You will need to sign up for a free account to download Snort rules. Create an account if you don’t already have one.
+After signing in, download the latest version of Snort for Windows.
+Step 2: Download and Install Npcap
+Snort requires Npcap to capture network traffic. Visit the Npcap website https://nmap.org/npcap/ to download it.
+Install Npcap by following the installation instructions on the website.
+Ensure that you select the options to install Npcap in WinPcap API-compatible mode. This is important for Snort to work properly.
+Step 3: Install Snort
+Once you’ve downloaded Snort, run the installer and follow the instructions.
+By default, Snort will be installed in the directory C:\Snort\.
+After the installation, you’ll find Snort’s configuration files, libraries, and binaries in this folder.
+Step 4: Download Snort Rules
+After signing in to your Snort account, go to the "Rule" section and download the appropriate ruleset for your Snort version.
+Extract the rules into the C:\Snort\etc\ folder.
+Copy the .rules files into this directory, ensuring they are placed correctly in the existing folder structure of Snort.
+Step 5: Configure Snort
+Open the snort.conf file located in the C:\Snort\etc\ folder using any text editor.
+Edit this file to match your network environment. Update the path to your rule files in the configuration (e.g., specify the path to the rule files you just downloaded).
+Save and close the configuration file.
+Step 6: Open Command Prompt as Administrator
+Press Win + X on your keyboard and select "Command Prompt (Admin)" or "Windows Terminal (Admin)" to open the command line with administrator privileges.
+Step 7: Verify Snort Installation
+Navigate to the Snort directory:
+
+cmd
+Copy code
+cd c:\Snort\bin\
+This command ensures you are in the correct directory where the Snort executable files are located.
+
+Check Snort version:
+
+cmd
+Copy code
+snort -V
+This command displays the current version of Snort, confirming it was installed successfully.
+
+List network interfaces:
+
+cmd
+Copy code
+snort -W
+This command lists all the available network interfaces. Take note of the interface number you want Snort to monitor (for example, -i 4 for interface number 4).
+
+Step 8: Test Snort Configuration
+Test the Snort configuration file:
+cmd
+Copy code
+snort -i -1 -c c:\Snort\etc\snort.conf -T
+This command tests your Snort configuration file for any syntax or configuration errors without launching Snort.
+Step 9: Run Snort in IDS Mode
+Start Snort to monitor traffic:
+cmd
+Copy code
+snort -i 4 -c c:\snort\etc\snort.conf -A console
+Replace 4 with the actual interface number you want to monitor. This command launches Snort and displays alerts directly in the console. Snort will now actively monitor network traffic based on the rules in your configuration file.
+By following these steps, you'll successfully set up Snort to act as an Intrusion Detection System on your network, allowing you to detect malicious traffic based on pre-defined rules.
